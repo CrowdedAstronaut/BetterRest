@@ -20,23 +20,19 @@ struct ContentView: View {
 	
     var body: some View {
 		NavigationView {
-			VStack {
-				Text("When do you want to wake up?")
-					.font(.headline)
-
+			Section("When do you want to wake up?") {
 				DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
 					.labelsHidden()
+			}
 
-				Text("Desired amount of sleep")
-					.font(.headline)
-
+			Section("Desired amount of sleep") {
 				Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
-				
-				Text("Daily coffee intake")
-					.font(.headline)
+			}
 
+			Section("Daily coffee intake") {
 				Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
 			}
+
 			.navigationTitle("BetterRest")
 			.toolbar {
 				Button("Calculate", action: calculateBedtime)
