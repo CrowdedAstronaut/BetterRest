@@ -30,7 +30,11 @@ struct ContentView: View {
 			}
 
 			Section("Daily coffee intake") {
-				Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+				Picker("Number of cups" ,selection: $coffeeAmount) {
+					ForEach(1..<21) {
+						Text(String($0))
+					}
+				}
 			}
 
 			.navigationTitle("BetterRest")
